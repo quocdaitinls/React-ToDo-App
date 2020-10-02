@@ -13,7 +13,10 @@ class App extends Component {
         this.delItem = this.delItem.bind(this);
     }
     onFormSubmit(e) {
-        let x = [...this.state.listTodo, e];
+        let x =
+            e === "clear all the task bellow !!!"
+                ? []
+                : [...this.state.listTodo, e];
         this.setState({
             listTodo: x,
         });
