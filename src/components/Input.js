@@ -4,28 +4,32 @@ class Input extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            input: "",
-            click: 0,
+            value: "",
         };
-        this.onInputChange = this.onInputChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+        this.numberID = 0;
     }
-    onInputChange(e) {
+    onInputChange = (e) => {
         this.setState({
-            input: e.target.value,
+            value: e.target.value,
         });
-    }
-    onSubmit(e) {
+    };
+    onSubmit = (e) => {
         e.preventDefault();
-        this.props.onFormSubmit(this.state.input);
-    }
+        this.props.onFormSubmit({
+            id: ++this.numberID,
+            value: this.state.value,
+        });
+    };
     inputOnKeyPress = (e) => {
         if (e.keyCode === 13) {
             this.onSubmit();
         }
     };
     clearAll = () => {
-        this.props.onFormSubmit("clear all the task bellow !!!");
+        this.numberID = 0;
+        this.props.onFormSubmit({
+            value: "clear all the task bellow !!!",
+        });
     };
     render() {
         return (
@@ -37,7 +41,7 @@ class Input extends Component {
                         id="inputArea"
                         onChange={this.onInputChange}
                         onKeyPress={this.inputOnKeyPress}
-                        maxlength={30}
+                        maxLength={30}
                     />
                     <button type="submit">SUBMIT</button>
                 </form>

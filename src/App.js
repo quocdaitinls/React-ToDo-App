@@ -7,14 +7,14 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            listTodo: [],
+            listTodo: [], // list gồm các object chứa id và thông tin
         };
         this.onFormSubmit = this.onFormSubmit.bind(this);
         this.delItem = this.delItem.bind(this);
     }
     onFormSubmit(e) {
         let x =
-            e === "clear all the task bellow !!!"
+            e.value === "clear all the task bellow !!!"
                 ? []
                 : [...this.state.listTodo, e];
         this.setState({
@@ -22,7 +22,7 @@ class App extends Component {
         });
     }
     delItem(i) {
-        let x = [...this.state.listTodo].filter((item, index) => index !== i);
+        let x = [...this.state.listTodo].filter(item => item.id !== i);
         this.setState({
             listTodo: x,
         });
@@ -31,7 +31,7 @@ class App extends Component {
         return (
             <div className="App">
                 <TitleReactTodo />
-                <Input onFormSubmit={this.onFormSubmit} />
+                <Input onFormSubmit={this.onFormSubmit}/>
                 <ListToDo
                     listItem={this.state.listTodo}
                     delItem={this.delItem}

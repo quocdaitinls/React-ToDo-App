@@ -11,8 +11,13 @@ class ListToDo extends Component {
         this.props.delItem(i);
     }
     render() {
-        const listItem = this.props.listItem.map((item, index) => (
-            <ListItem key={index} listID={index} value={item} onClickX={this.onClickX} />
+        const listItem = this.props.listItem.map((item) => (
+            <ListItem
+                key={item.id}
+                listID={item.id}
+                value={item.value}
+                onClickX={this.onClickX}
+            />
         ));
         return <ul className="ListToDo">{listItem}</ul>;
     }
