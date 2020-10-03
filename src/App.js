@@ -22,7 +22,7 @@ class App extends Component {
         });
     }
     delItem(i) {
-        let x = [...this.state.listTodo].filter(item => item.id !== i);
+        let x = [...this.state.listTodo].filter((item) => item.id !== i);
         this.setState({
             listTodo: x,
         });
@@ -31,7 +31,7 @@ class App extends Component {
         return (
             <div className="App">
                 <TitleReactTodo />
-                <Input onFormSubmit={this.onFormSubmit}/>
+                <Input onFormSubmit={this.onFormSubmit} />
                 <ListToDo
                     listItem={this.state.listTodo}
                     delItem={this.delItem}

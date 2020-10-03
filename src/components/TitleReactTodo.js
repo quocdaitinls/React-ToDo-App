@@ -1,5 +1,5 @@
 import React from "react";
-import './TitleReactTodo.scss'
+import "./TitleReactTodo.scss";
 
 function TitleReactTodo() {
     return <h1 className="TitleReact">React Todo</h1>;
